@@ -12,7 +12,7 @@ namespace ChickMVC.Controllers
         {
             _httpClient = httpClient;
         }
-        public async Task <IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             try
             {

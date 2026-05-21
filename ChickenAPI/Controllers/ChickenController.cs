@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.EntityFrameworkCore;
 
- 
+
 
 namespace ChickenAPI.Controllers
 
@@ -16,7 +16,7 @@ namespace ChickenAPI.Controllers
 
     [ApiController]
 
- 
+
 
     public class ChickenController : Controller
 
@@ -24,7 +24,7 @@ namespace ChickenAPI.Controllers
 
         private readonly FarmDbContext _context;
 
- 
+
 
         public ChickenController(FarmDbContext context)
 
@@ -34,7 +34,7 @@ namespace ChickenAPI.Controllers
 
         }
 
- 
+
 
         //GET: api/Chicken
 
@@ -48,7 +48,7 @@ namespace ChickenAPI.Controllers
 
         }
 
- 
+
 
         //GET: api/Chicken/{id}
 
@@ -60,7 +60,7 @@ namespace ChickenAPI.Controllers
 
             var chicken = await _context.Chicken.FindAsync(id);
 
-            if(chicken == null)
+            if (chicken == null)
 
                 return NotFound();
 
@@ -68,7 +68,7 @@ namespace ChickenAPI.Controllers
 
         }
 
- 
+
 
         //POST: api/Chicken
 
@@ -82,13 +82,13 @@ namespace ChickenAPI.Controllers
 
             await _context.SaveChangesAsync();
 
- 
+
 
             return CreatedAtAction(nameof(GetById), new { id = chicken.ChickID }, chicken);
 
         }
 
- 
+
 
         [HttpPut("{id}")]
 
@@ -98,13 +98,13 @@ namespace ChickenAPI.Controllers
 
             if (id != chicken.ChickID)
 
-            return BadRequest();
+                return BadRequest();
 
- 
+
 
             _context.Entry(chicken).State = EntityState.Modified;
 
- 
+
 
             try
 
@@ -118,9 +118,9 @@ namespace ChickenAPI.Controllers
 
             {
 
-                if(!_context.Chicken.Any(e => e.ChickID == id))
+                if (!_context.Chicken.Any(e => e.ChickID == id))
 
-                return NotFound();
+                    return NotFound();
 
                 throw;
 
@@ -130,7 +130,7 @@ namespace ChickenAPI.Controllers
 
         }
 
- 
+
 
         [HttpDelete("{id}")]
 
@@ -140,17 +140,17 @@ namespace ChickenAPI.Controllers
 
             var chicken = await _context.Chicken.FindAsync(id);
 
-            if(chicken == null)
+            if (chicken == null)
 
-            return NotFound();
+                return NotFound();
 
- 
+
 
             _context.Chicken.Remove(chicken);
 
             await _context.SaveChangesAsync();
 
- 
+
 
             return NoContent();
 
@@ -158,8 +158,7 @@ namespace ChickenAPI.Controllers
 
     }
 
-     
+
 
 }
 
- 
