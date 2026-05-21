@@ -10,7 +10,11 @@ namespace ChickenAPI.Model
 
         [Required]
         [MaxLength(50)]
-        public string Breed { get; set; }
+        public string? Name { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string? Breed { get; set; }
 
         [Range(0, 50)]
         public int Age { get; set; }
