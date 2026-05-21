@@ -76,11 +76,12 @@ jobs:
 
     - name: Grace Period For Databse Boot
       run: |
-        echo "Giving Microsoft SQL Server 25 seconds to complete table setups..."
-        sleep 25
+        echo "Giving Microsoft SQL Server 10 seconds to complete table setups..."
+        sleep 0
+        
     - name: Wait for API Readiness
       run: |
-        echo "Waiting for ChickenApi To wake up at http://localhost:8080..."
+        echo "Waiting for ChickenAPI To wake up at http://localhost:8080..."
         timeout 60s sh -c 'until curl -sSf http://localhost:8080/GetMeEggs > /dev/null; do sleep 2; done'
         echo "ChickenAPI is up and running!"
 
